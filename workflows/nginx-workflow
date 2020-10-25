@@ -1,0 +1,25 @@
+id: nginx-workflow
+
+info:
+  name: nginx workflow
+  author: hackerone.com/w2w
+
+variables:
+
+  nginx_tech: technologies/tech-detect.yaml
+  nginx1: vulnerabilities/git-config-nginxoffbyslash.yaml
+  nginx2: vulnerabilities/nginx-module-vts-xss.yaml
+  nginx3: cves/CVE-2020-12720.yaml
+
+  # This will run all 3 checks if nginx tech is found.
+
+logic:
+  |
+  nginx_tech()
+
+  if nginx_tech["nginx"] {
+
+    nginx1()
+    nginx2()
+    nginx3()
+  }
