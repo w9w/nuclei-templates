@@ -16,3 +16,4 @@ requests:
       - type: word
         words:
           - "\"><injectable>"
+        part: body
